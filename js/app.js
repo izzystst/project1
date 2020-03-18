@@ -1,8 +1,7 @@
 console.log('hell o')
 
 class Player {
-	constructor(name){
-		this.name = name
+	constructor(){
 		this.chips = [1, 2, 3]
 	}
 }
@@ -11,7 +10,8 @@ const game = {
 	// console.log(Player.chips)
 	center: 0,
 	// chips = this.chipsx
-	chips: this.chips,
+	
+	
 
 
 	rollDice: function(){
@@ -26,9 +26,9 @@ const game = {
 		console.log(chips)
 	},
 
-	turn:function(){
+	rolledAmount:function(){
 	// console.log(this.chips)
-		if(this.chips.length === 3){
+		if(this.chips === 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 			}
@@ -41,6 +41,15 @@ const game = {
 				this.rollDice() 
 			}
 		}
+	},
+	movingPieces:function(){
+		if(roll === 1){
+			//move a piece to the center
+		}else if(roll === 2){
+			//move left
+		}else if(roll === 3){
+			//move right
+		}else{ //do nothing}
 	}
-
+console.log(Player.chips.pop())} 
 }
