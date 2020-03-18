@@ -1,4 +1,7 @@
 console.log('hell o')
+//should the players be in an array?
+//
+
 
 class Player {
 	constructor(){
@@ -7,6 +10,7 @@ class Player {
 	}
 }
 const game = {
+	players: [player1, player2, player3],
 	//state
 	// console.log(Player.chips)
 	// chips = this.chipsx
@@ -20,16 +24,16 @@ const game = {
 
 
 	rollDice: function(){
-		let center = 1
-		let left = 2
-		let right = 3
-		let blank1 = 4
-		let blank2 = 5
-		let blank3 = 6
+		// let center = 1
+		// let left = 2
+		// let right = 3
+		// let blank1 = 4
+		// let blank2 = 5
+		// let blank3 = 6
 		let roll = Math.ceil(Math.random()*6)
 		console.log(roll)
-		return roll
-		
+		// return roll
+		this.movingPieces(roll)
 	},
 
 	rolledAmount:function(player){
@@ -37,7 +41,8 @@ const game = {
 		if(player.chips.length >= 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
-				this.movingPieces()
+
+				// this.movingPieces()
 			}
 		}else if(player.chips.length === 2){
 			for(let i = 0; i < 2; i++){
@@ -53,14 +58,23 @@ const game = {
 		}
 	},
 	movingPieces:function(roll){
+		//this should really be player, not the specific player and take that from the rolled amount
 		if(roll === 1){
 			game.center.push(player1.chips.splice(0, 1))
 			//move a piece to the center
+			console.log("this is the center", game.center)
+			console.log('this is player 1', player1.chips)
 		}else if(roll === 2){
 			player3.chips.push(player1.chips.splice(0, 1))
 			//move left
+			console.log("this is player 3", player3.chips)
+			console.log('this is player 1', player1.chips)
+
 		}else if(roll === 3){
 			player2.chips.push(player1.chips.splice(0, 1))
+			console.log('this is player 2', player2.chips)
+			console.log('this is player 1', player1.chips)
+
 			//move right
 		}else{ //do nothing}
 	}
@@ -71,5 +85,6 @@ const game = {
 let player1 = new Player()
 let player2 = new Player()
 let player3 = new Player()
-console.log(player1.chips)
-console.log(game.center)
+console.log(game.players)
+// console.log(player1.chips)
+// console.log(game.center)
