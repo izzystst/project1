@@ -8,9 +8,13 @@ class Player {
 const game = {
 	//state
 	// console.log(Player.chips)
-	center: 0,
 	// chips = this.chipsx
+	center: 0,
 	
+
+	startGame:function(){
+		
+	},
 	
 
 
@@ -23,20 +27,20 @@ const game = {
 		let blank3 = 6
 		let roll = Math.ceil(Math.random()*6)
 		console.log(roll)
-		console.log(chips)
+		
 	},
 
-	rolledAmount:function(){
+	rolledAmount:function(player){
 	// console.log(this.chips)
-		if(this.chips === 3){
+		if(player.chips.length === 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 			}
-		}else if(this.chips === 2){
+		}else if(player.chips.length === 2){
 			for(let i = 0; i < 2; i++){
 				this.rollDice()
 			}
-		}else if(this.chips === 1){
+		}else if(player.chips.length === 1){
 			for(let i = 0; i < 1; i++){
 				this.rollDice() 
 			}
@@ -51,5 +55,9 @@ const game = {
 			//move right
 		}else{ //do nothing}
 	}
+
 console.log(Player.chips.pop())} 
 }
+let player1 = new Player()
+let player2 = new Player()
+let player3 = new Player()
