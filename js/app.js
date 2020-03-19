@@ -33,6 +33,12 @@ const game = {
 	center: 0,
 	diceSides: ['L', 'blank', 'R', 'blank', 'C', 'blank',],
 	playersArr: [],
+	turn: 0,// index
+	// left: ,
+	// right: ,
+
+
+
 	
 
 	createPlayers:function(name){
@@ -40,46 +46,40 @@ const game = {
 		this.playersArr.push(player)
 		
 	},
-	startGame:function(){
-		for(let i = 0; i < this.playersArr.length; i++){
-			this.playersArr[i].changeTurn()
-			while(this.playersArr[i].currentTurn = true){
-				this.rolledAmount(i)
-			}
-		}
-	},
+	// startGame:function(){
+	// 	for(let i = 0; i < this.playersArr.length; i++){
+	// 		this.playersArr[i].changeTurn()
+	// 		while(this.playersArr[i].currentTurn = true){
+	// 			this.rolledAmount(i)
+	// 		}
+	// 	}
+	// },
 
 
 	rollDice: function(player){
-		// let center = 1
-		// let left = 2
-		// let right = 3
-		// let blank1 = 4
-		// let blank2 = 5
-		// let blank3 = 6
 		let roll = Math.ceil(Math.random()*5)
 		console.log(this.diceSides[roll])
-		this.playersArr[i].changeTurn()
+		//this.playersArr[i].changeTurn()
 		// return roll
 		
-		// this.movingPieces(this.diceSides[roll])
+		this.movingPieces(this.diceSides[roll])
 	},
 
 	rolledAmount:function(index){
 	// console.log(this.chips)
-		if(this.playersArr[index].chips >= 3){
+		if(this.playersArr[this.turn].chips >= 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 
 				// this.movingPieces()
 			}
-		}else if(this.playersArr[index].chips === 2){
+		}else if(this.playersArr[this.turn].chips === 2){
 			for(let i = 0; i < 2; i++){
 				this.rollDice()
 				
 
 			}
-		}else if(this.playersArr[index].chips === 1){
+		}else if(this.playersArr[this.turn].chips === 1){
 			for(let i = 0; i < 1; i++){
 				this.rollDice()
 				
@@ -92,26 +92,26 @@ const game = {
 		//this should really be player, not the specific player and take that from the rolled amount
 		if(move === 'C'){
 			game.center += 1
-			this.playersArr[i].chips -= 1
+			this.playersArr[this.turn].chips -= 1
 			//move a piece to the center
 		}else if(move === 'L'){
-			if(i == this.playersArr.length - 1){
+			if(this.turn == this.playersArr.length - 1){
 				this.playersArr[0].chips += 1
-				this.playersArr[i].chips -= 1
+				this.playersArr[this.turn].chips -= 1
 				//this is if it is the last item in the array, it will add a chip to the first item in the array
 			}else{
-			this.playersArr[i + 1].chips += 1
-			this.playersArr[i].chips -= 1
-			//move left
+				this.playersArr[this.turn + 1].chips += 1
+				this.playersArr[this.turn].chips -= 1
+				//move left
 			}
 		}else if(move === 'R'){
-			if(i === 0){
+			if(this.turn === 0){
 				this.playersArr[this.playersArr.length - 1].chips += 1
-				this.playersArr[i].chips -= 1
+				this.playersArr[this.turn].chips -= 1
 				//if it is the first item in the array, it will 'move' a chip to the last item in the array
 			}
-			else{this.playersArr[i - 1].chips += 1
-			this.playersArr[i].chips -= 1
+			else{this.playersArr[this.turn - 1].chips += 1
+			this.playersArr[this.turn].chips -= 1
 			}
 
 			//move right
