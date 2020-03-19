@@ -14,8 +14,10 @@ class Player {
 
 	}
 	changeTurn(){
+		if(this.currentTurn === false){
 		this.currentTurn = true
 		console.log(`its turn`)
+		}else{this.currentTurn = false}
 	}
 	// game.players.push(new Player)
 }
@@ -41,7 +43,7 @@ const game = {
 	startGame:function(){
 		for(let i = 0; i < this.playersArr.length; i++){
 			this.playersArr[i].changeTurn()
-			if(this.playersArr[i].currentTurn = true){
+			while(this.playersArr[i].currentTurn = true){
 				this.rolledAmount(i)
 			}
 		}
@@ -57,6 +59,7 @@ const game = {
 		// let blank3 = 6
 		let roll = Math.ceil(Math.random()*5)
 		console.log(this.diceSides[roll])
+		this.playersArr[i].changeTurn()
 		// return roll
 		
 		// this.movingPieces(this.diceSides[roll])
