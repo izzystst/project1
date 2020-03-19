@@ -49,7 +49,7 @@ const game = {
 		console.log(this.diceSides[roll])
 		// return roll
 		
-		// this.movingPieces(this.diceSides[roll])
+		this.movingPieces(this.diceSides[roll])
 	},
 
 	rolledAmount:function(turnIndex){
@@ -82,13 +82,24 @@ const game = {
 			this.playersArr[i].chips -= 1
 			//move a piece to the center
 		}else if(move === 'L'){
+			if(i == this.playersArr.length - 1){
+				this.playersArr[0].chips += 1
+				this.playersArr[i].chips -= 1
+				//this is if it is the last item in the array, it will add a chip to the first item in the array
+			}else{
 			this.playersArr[i + 1].chips += 1
 			this.playersArr[i].chips -= 1
 			//move left
-
+			}
 		}else if(move === 'R'){
-			this.playersArr[i - 1].chips += 1
+			if(i === 0){
+				this.playersArr[this.playersArr.length - 1].chips += 1
+				this.playersArr[i].chips -= 1
+				//if it is the first item in the array, it will 'move' a chip to the last item in the array
+			}
+			else{this.playersArr[i - 1].chips += 1
 			this.playersArr[i].chips -= 1
+			}
 
 			//move right
 		}else{ //do nothing}
@@ -96,7 +107,10 @@ const game = {
 
 
 	},
-	// check
+	checkChips:function(){
+		//if only one player has chips, they are the winner
+		if()
+	}
 
 }
 game.startGame("player1")
