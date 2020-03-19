@@ -10,15 +10,8 @@ class Player {
 		this.name = name
 		// this.position = 0
 		this.chips = 3
-		this.currentTurn = false
-
 	}
-	changeTurn(){
-		if(this.currentTurn === false){
-		this.currentTurn = true
-		console.log(`its turn`)
-		}else{this.currentTurn = false}
-	}
+	
 	// game.players.push(new Player)
 }
 
@@ -63,11 +56,16 @@ const game = {
 		// return roll
 		
 		this.movingPieces(this.diceSides[roll])
+
 	},
 
 	rolledAmount:function(index){
 	// console.log(this.chips)
-		if(this.playersArr[this.turn].chips >= 3){
+
+		if(this.playersArr[this.turn].chips === 0){
+			this.changeTurn()
+
+		}else if(this.playersArr[this.turn].chips >= 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 
@@ -85,16 +83,15 @@ const game = {
 				
 			}
 		}
+		this.changeTurn()
 	},
 	movingPieces:function(move){
-		//needs to check index of the 
-		//if index of player is 0,~~
-		//this should really be player, not the specific player and take that from the rolled amount
 		if(move === 'C'){
 			game.center += 1
 			this.playersArr[this.turn].chips -= 1
 			//move a piece to the center
-		}else if(move === 'L'){
+		}
+		else if(move === 'L'){
 			if(this.turn == this.playersArr.length - 1){
 				this.playersArr[0].chips += 1
 				this.playersArr[this.turn].chips -= 1
@@ -104,7 +101,8 @@ const game = {
 				this.playersArr[this.turn].chips -= 1
 				//move left
 			}
-		}else if(move === 'R'){
+		}
+		else if(move === 'R'){
 			if(this.turn === 0){
 				this.playersArr[this.playersArr.length - 1].chips += 1
 				this.playersArr[this.turn].chips -= 1
@@ -117,8 +115,19 @@ const game = {
 			//move right
 		}else{ //do nothing}
 		}
+		
 
 
+
+	},
+	changeTurn:function(){
+		if(this.turn < this.playersArr.length - 1){
+			this.turn += 1
+		}else if(this.turn = this.playersArr.length - 1){
+			this.turn = 0
+		}
+		console.log("turn was changed to", this.turn)
+		// this.rolledAmount()
 	},
 	checkChips:function(){
 		//if only one player has chips, they are the winner
