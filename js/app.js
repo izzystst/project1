@@ -5,10 +5,10 @@ console.log('hell o')
 
 
 class Player {
-	constructor(name, position){
+	constructor(name){
 		
 		this.name = name
-		this.position = 0
+		// this.position = 0
 		this.chips = 3
 		this.currentTurn = false
 
@@ -16,16 +16,15 @@ class Player {
 	// game.players.push(new Player)
 }
 
-let playersArr = []
 
-let playerButt = new Player("larry")
-playersArr.push(playerButt)
-playerButt = new Player("jeff")
-playersArr.push(playerButt)
+// let playerButt = new Player("larry")
+// playersArr.push(playerButt)
+// playerButt = new Player("jeff")
+// playersArr.push(playerButt)
 
-console.log(playersArr)
+// console.log(playersArr)
 
-console.log("this is larry's chips", playersArr[0].chips)
+// console.log("this is larry's chips", playersArr[0].chips)
 
 const game = {
 	players: [],
@@ -34,10 +33,13 @@ const game = {
 	// chips = this.chipsx
 	center: 0,
 	diceSides: ['L', 'blank', 'R', 'blank', 'C', 'blank',],
+	playersArr: [],
 	
 
-	startGame:function(){
-		
+	startGame:function(name){
+		let player = new Player(name)
+		this.playersArr.push(player)
+
 	},
 	
 
@@ -53,7 +55,7 @@ const game = {
 		console.log(this.diceSides[roll])
 		// return roll
 		
-		this.movingPieces(roll)
+		this.movingPieces(this.diceSides[roll])
 	},
 
 	rolledAmount:function(player){
@@ -77,20 +79,20 @@ const game = {
 			}
 		}
 	},
-	movingPieces:function(roll){
+	movingPieces:function(move){
 		//this should really be player, not the specific player and take that from the rolled amount
-		if(roll === 1){
+		if(move === 'C'){
 			game.center.push(player.chips.splice(0, 1))
 			//move a piece to the center
 			console.log("this is the center", game.center)
 			console.log('this is player 1', player1.chips)
-		}else if(roll === 2){
+		}else if(move === 'L'){
 			player3.chips.push(player.chips.splice(0, 1))
 			//move left
 			console.log("this is player 3", player3.chips)
 			console.log('this is player 1', player1.chips)
 
-		}else if(roll === 3){
+		}else if(move === 'R'){
 			player2.chips.push(player.chips.splice(0, 1))
 			console.log('this is player 2', player2.chips)
 			console.log('this is player 1', player1.chips)
