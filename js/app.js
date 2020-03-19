@@ -17,17 +17,10 @@ class Player {
 }
 
 
-// let playerButt = new Player("larry")
-// playersArr.push(playerButt)
-// playerButt = new Player("jeff")
-// playersArr.push(playerButt)
 
-// console.log(playersArr)
 
-// console.log("this is larry's chips", playersArr[0].chips)
 
 const game = {
-	players: [],
 	//state
 	// console.log(Player.chips)
 	// chips = this.chipsx
@@ -39,6 +32,7 @@ const game = {
 	startGame:function(name){
 		let player = new Player(name)
 		this.playersArr.push(player)
+
 
 	},
 	
@@ -55,24 +49,24 @@ const game = {
 		console.log(this.diceSides[roll])
 		// return roll
 		
-		this.movingPieces(this.diceSides[roll])
+		// this.movingPieces(this.diceSides[roll])
 	},
 
-	rolledAmount:function(player){
+	rolledAmount:function(turnIndex){
 	// console.log(this.chips)
-		if(player.chips.length >= 3){
+		if(this.playersArr[turnIndex].chips >= 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 
 				// this.movingPieces()
 			}
-		}else if(player.chips.length === 2){
+		}else if(this.playersArr[turnIndex].chips === 2){
 			for(let i = 0; i < 2; i++){
 				this.rollDice()
 				
 
 			}
-		}else if(player.chips.length === 1){
+		}else if(this.playersArr[turnIndex].chips === 1){
 			for(let i = 0; i < 1; i++){
 				this.rollDice()
 				
@@ -80,33 +74,32 @@ const game = {
 		}
 	},
 	movingPieces:function(move){
+		//needs to check index of the 
+		//if index of player is 0,~~
 		//this should really be player, not the specific player and take that from the rolled amount
 		if(move === 'C'){
-			game.center.push(player.chips.splice(0, 1))
+			game.center += 1
+			this.playersArr[i].chips -= 1
 			//move a piece to the center
-			console.log("this is the center", game.center)
-			console.log('this is player 1', player1.chips)
 		}else if(move === 'L'){
-			player3.chips.push(player.chips.splice(0, 1))
+			this.playersArr[i + 1].chips += 1
+			this.playersArr[i].chips -= 1
 			//move left
-			console.log("this is player 3", player3.chips)
-			console.log('this is player 1', player1.chips)
 
 		}else if(move === 'R'){
-			player2.chips.push(player.chips.splice(0, 1))
-			console.log('this is player 2', player2.chips)
-			console.log('this is player 1', player1.chips)
+			this.playersArr[i - 1].chips += 1
+			this.playersArr[i].chips -= 1
 
 			//move right
 		}else{ //do nothing}
-	}
+		}
 
 
+	},
+	// check
+
 }
-}
-let player1 = new Player()
-let player2 = new Player()
-let player3 = new Player()
-console.log(game.players)
-// console.log(player1.chips)
+game.startGame("player1")
+game.startGame("player2")
+game.startGame("player3")// console.log(player1.chips)
 // console.log(game.center)
