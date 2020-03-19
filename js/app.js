@@ -13,6 +13,10 @@ class Player {
 		this.currentTurn = false
 
 	}
+	changeTurn(){
+		this.currentTurn = true
+		console.log(`its turn`)
+	}
 	// game.players.push(new Player)
 }
 
@@ -29,13 +33,19 @@ const game = {
 	playersArr: [],
 	
 
-	startGame:function(name){
+	createPlayers:function(name){
 		let player = new Player(name)
 		this.playersArr.push(player)
-
-
+		
 	},
-	
+	startGame:function(){
+		for(let i = 0; i < this.playersArr.length; i++){
+			this.playersArr[i].changeTurn()
+			if(this.playersArr[i].currentTurn = true){
+				this.rolledAmount(i)
+			}
+		}
+	},
 
 
 	rollDice: function(player){
@@ -49,24 +59,24 @@ const game = {
 		console.log(this.diceSides[roll])
 		// return roll
 		
-		this.movingPieces(this.diceSides[roll])
+		// this.movingPieces(this.diceSides[roll])
 	},
 
-	rolledAmount:function(turnIndex){
+	rolledAmount:function(index){
 	// console.log(this.chips)
-		if(this.playersArr[turnIndex].chips >= 3){
+		if(this.playersArr[index].chips >= 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 
 				// this.movingPieces()
 			}
-		}else if(this.playersArr[turnIndex].chips === 2){
+		}else if(this.playersArr[index].chips === 2){
 			for(let i = 0; i < 2; i++){
 				this.rollDice()
 				
 
 			}
-		}else if(this.playersArr[turnIndex].chips === 1){
+		}else if(this.playersArr[index].chips === 1){
 			for(let i = 0; i < 1; i++){
 				this.rollDice()
 				
@@ -109,11 +119,11 @@ const game = {
 	},
 	checkChips:function(){
 		//if only one player has chips, they are the winner
-		if()
-	}
+		
+	},
 
 }
-game.startGame("player1")
-game.startGame("player2")
-game.startGame("player3")// console.log(player1.chips)
+game.createPlayers("player1")
+game.createPlayers("player2")
+game.createPlayers("player3")// console.log(player1.chips)
 // console.log(game.center)
