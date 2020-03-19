@@ -63,7 +63,7 @@ const game = {
 	// console.log(this.chips)
 
 		if(this.playersArr[this.turn].chips === 0){
-			this.changeTurn()
+			
 
 		}else if(this.playersArr[this.turn].chips >= 3){
 			for (let i = 0; i < 3; i++){	
@@ -128,13 +128,43 @@ const game = {
 		}
 		console.log("turn was changed to", this.turn)
 		// this.rolledAmount()
-	},
-	checkChips:function(){
-		//if only one player has chips, they are the winner
-		
+		this.checkChips()
 	},
 
+	checkChips:function(){
+		// find out if only one player has chips and the rest have none
+		let playersWithChips = []
+
+		// loop over players
+			// if thery have chips
+				// playersWithChips
+
+		// if playersWithChips.length 1
+			// win
+		// else 
+			// rolledAmount() keep going
+
+		for(let i = 0; i < this.playersArr.length; i++){
+			if(this.playersArr[i].chips === 0){
+				playersWithChips.push(this.playersArr[i])
+			} 
+			if(playersWithChips.length === this.playersArr.length - 1){
+				console.log("we have a winner!", this.playersArr[this.turn])
+				return  
+				}
+			// if(this.playersArr[i].chips > 0){
+				// console.log(this.playersArr[i])
+	
+			}
+		this.rolledAmount()
+		
+		//if only one player has chips, they are the winner
+	
+
+	}
+
 }
+
 game.createPlayers("player1")
 game.createPlayers("player2")
 game.createPlayers("player3")// console.log(player1.chips)
