@@ -46,11 +46,18 @@ const game = {
 		}
 	},
 	startGame:function(){
+		const container = document.querySelector("#container")
+		const centerDiv = document.querySelector("#center")
+		const center = document.createElement('div')
+		center.setAttribute('id', 'center-chips')
+		center.innerText = `${this.center}`
+		centerDiv.appendChild(center)
+
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
 			playerDiv.setAttribute('class', 'player')
-			playerDiv.innerText = "this is here"
-			document.querySelector("#container").appendChild(playerDiv)
+			playerDiv.innerText = `${this.playersArr[i].name}, ${this.playersArr[i].chips}`
+			container.appendChild(playerDiv)
 		}
 	},
 	
