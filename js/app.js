@@ -60,9 +60,10 @@ const game = {
 	placeChips:function(){
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
-			playerDiv.setAttribute('class', 'player')
+			playerDiv.setAttribute('class', `player-${[i]}`)
 			playerDiv.innerText = `${this.playersArr[i].name}`
 			container.appendChild(playerDiv)
+
 			for(let j = 0; j < this.playersArr[i].chips; j++){
 				const chipImg = document.createElement('img')
 				chipImg.setAttribute('id', 'chip-image')
@@ -113,6 +114,7 @@ const game = {
 		if(move === 'C'){
 			game.center += 1
 			this.playersArr[this.turn].chips -= 1
+
 			//move a piece to the center
 		}
 		else if(move === 'L'){
@@ -139,6 +141,10 @@ const game = {
 		}
 		
 
+	},
+moveMent:function(){
+	currentPlayer = document.querySelector(`.player-${[this.turn]}`)
+	console.log(currentPlayer)
 
 	},
 	changeTurn:function(){
