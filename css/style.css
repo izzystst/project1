@@ -1,5 +1,20 @@
 #container {
-	width: 70%;
+	width: 90%;
+	height: 90%;
 	margin: auto;
+	background-color: lavender;
+	padding: 100px;
+}
+#form{
+	width: 50%;
+	height: 50%;
+	margin:auto;
+	display: inline-block;
 	background-color: blue;
+}
+#center {
+	width: 50%;
+	height: 50%;
+	margin:auto;
+	
 }

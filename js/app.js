@@ -139,11 +139,11 @@ const game = {
 			// win
 		// else 
 			// rolledAmount() keep going
-		console.log(this.turn)
+		
 		for(let i = 0; i < this.playersArr.length; i++){
 			if(this.playersArr[i].chips > 0){
 				playersWithChips.push(this.playersArr[i])
-				console.log(playersWithChips)
+				
 			}
 			// if(this.playersArr[i].chips === 0){
 			// 	console.log(playersWithNoChips)
@@ -163,6 +163,19 @@ const game = {
 	}
 
 } }
+
+const addPlayerForm = document.querySelector('#addPlayer')
+const formInput = document.querySelector('#playerName')
+
+addPlayerForm.addEventListener('submit',(event)=>{
+	addPlayerForm.querySelector("#playerName")
+
+	event.preventDefault()
+	console.log("submitted")
+	game.createPlayers(formInput.value)
+	formInput.value = ""
+	
+})
 
 game.createPlayers("player1")
 game.createPlayers("player2")
