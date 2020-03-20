@@ -63,7 +63,7 @@ const game = {
 			playerDiv.setAttribute('class', 'player')
 			playerDiv.innerText = `${this.playersArr[i].name}`
 			container.appendChild(playerDiv)
-			for(let i = 0; i < 3; i++){
+			for(let j = 0; j < this.playersArr[i].chips; j++){
 				const chipImg = document.createElement('img')
 				chipImg.setAttribute('id', 'chip-image')
 				chipImg.setAttribute("src", 'css/chip.png')
