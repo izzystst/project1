@@ -184,9 +184,14 @@ addPlayerForm.addEventListener('submit',(event)=>{
 
 	}
 })
+const startScreen = document.querySelector("#start")
 start.addEventListener("click", (event)=>{
 	console.log(event)
 	game.rolledAmount()
+	startScreen.style.visibility="hidden"
+	start.style.visibility="hidden"
+
+
 })
 
 // console.log(player1.chips)
