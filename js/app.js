@@ -53,6 +53,11 @@ const game = {
 		center.innerText = `${this.center}`
 		centerDiv.appendChild(center)
 		//sho
+		this.placeChips()
+		
+	},
+	
+	placeChips:function(){
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
 			playerDiv.setAttribute('class', 'player')
@@ -60,13 +65,13 @@ const game = {
 			container.appendChild(playerDiv)
 			for(let i = 0; i < 3; i++){
 				const chipImg = document.createElement('img')
+				chipImg.setAttribute('id', 'chip-image')
 				chipImg.setAttribute("src", 'css/chip.png')
 				playerDiv.appendChild(chipImg)
 			}
 		}
+		this.rolledAmount()
 	},
-	
-
 
 
 	rolledAmount:function(index){
@@ -148,41 +153,40 @@ const game = {
 	},
 
 	checkChips:function(){
-		// find out if only one player has chips and the rest have none
-		let playersWithNoChips = []
+		//this is the end of the players turn		
 		let playersWithChips =[]
-		// loop over players
-			// if thery have chips
-				// playersWithChips
-
-		// if playersWithChips.length 1
-			// win
-		// else 
-			// rolledAmount() keep going
-		
 		for(let i = 0; i < this.playersArr.length; i++){
 			if(this.playersArr[i].chips > 0){
 				playersWithChips.push(this.playersArr[i])
-				
 			}
-			// if(this.playersArr[i].chips === 0){
-			// 	console.log(playersWithNoChips)
-			// 	playersWithNoChips.push(this.playersArr[i])
-			
-			// if(this.playersArr[i].chips > 0){
-				// console.log(this.playersArr[i])
-	
 		}
 		if(playersWithChips.length > 1){
 			this.changeTurn()}
 		else{console.log("we have a winner!", playersWithChips[0])
 			return  
-		//if only one player has chips, they are the winner
+	}
+	
+				
+
+			
+		
+		
 	
 
-	}
+},
+// moveChips:function(){
+// 	const playerDiv = document.querySelector(".player")
+// 		const chipImg = document.querySelector('#chip-image')
+// 		for(let i = 0; i < this.playersArr.length; i++){
 
-} }
+// 			for(let j = 0; j < this.playersArr[i].chips; j++){
+// 				chipImg.setAttribute("src", '')
+// 				// playerDiv.appendChild(chipImg)
+// 			}
+// 		}
+// 	this.changeTurn()
+ }
+
 
 const addPlayerForm = document.querySelector('#addPlayer')
 const formInput = document.querySelector('#playerName')
@@ -190,7 +194,7 @@ const start = document.querySelector('#start-game')
 start.style.visibility="hidden"
 
 addPlayerForm.addEventListener('submit',(event)=>{
-	addPlayerForm.querySelector("#playerName")
+addPlayerForm.querySelector("#playerName")
 
 	event.preventDefault()
 	console.log("submitted")
