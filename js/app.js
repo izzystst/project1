@@ -62,10 +62,7 @@ const game = {
 	rolledAmount:function(index){
 	// console.log(this.chips)
 
-		if(this.playersArr[this.turn].chips === 0){
-			
-
-		}else if(this.playersArr[this.turn].chips >= 3){
+		if(this.playersArr[this.turn].chips >= 3){
 			for (let i = 0; i < 3; i++){	
 				this.rollDice()
 
@@ -83,7 +80,8 @@ const game = {
 				
 			}
 		}
-		this.changeTurn()
+		this.checkChips()
+		// this.changeTurn()x
 	},
 	movingPieces:function(move){
 		if(move === 'C'){
@@ -94,26 +92,24 @@ const game = {
 		else if(move === 'L'){
 			if(this.turn == this.playersArr.length - 1){
 				this.playersArr[0].chips += 1
-				this.playersArr[this.turn].chips -= 1
 				//this is if it is the last item in the array, it will add a chip to the first item in the array
 			}else{
 				this.playersArr[this.turn + 1].chips += 1
-				this.playersArr[this.turn].chips -= 1
 				//move left
 			}
+			this.playersArr[this.turn].chips -= 1
 		}
 		else if(move === 'R'){
 			if(this.turn === 0){
 				this.playersArr[this.playersArr.length - 1].chips += 1
-				this.playersArr[this.turn].chips -= 1
 				//if it is the first item in the array, it will 'move' a chip to the last item in the array
 			}
-			else{this.playersArr[this.turn - 1].chips += 1
-			this.playersArr[this.turn].chips -= 1
+			else{
+				this.playersArr[this.turn - 1].chips += 1
 			}
+			this.playersArr[this.turn].chips -= 1
 
 			//move right
-		}else{ //do nothing}
 		}
 		
 
@@ -128,13 +124,13 @@ const game = {
 		}
 		console.log("turn was changed to", this.turn)
 		// this.rolledAmount()
-		this.checkChips()
+		this.rolledAmount()
 	},
 
 	checkChips:function(){
 		// find out if only one player has chips and the rest have none
-		let playersWithChips = []
-
+		let playersWithNoChips = []
+		let playersWithChips =[]
 		// loop over players
 			// if thery have chips
 				// playersWithChips
@@ -143,27 +139,30 @@ const game = {
 			// win
 		// else 
 			// rolledAmount() keep going
-
+		console.log(this.turn)
 		for(let i = 0; i < this.playersArr.length; i++){
-			if(this.playersArr[i].chips === 0){
+			if(this.playersArr[i].chips > 0){
 				playersWithChips.push(this.playersArr[i])
-			} 
-			if(playersWithChips.length === this.playersArr.length - 1){
-				console.log("we have a winner!", this.playersArr[this.turn])
-				return  
-				}
+				console.log(playersWithChips)
+			}
+			// if(this.playersArr[i].chips === 0){
+			// 	console.log(playersWithNoChips)
+			// 	playersWithNoChips.push(this.playersArr[i])
+			
 			// if(this.playersArr[i].chips > 0){
 				// console.log(this.playersArr[i])
 	
-			}
-		this.rolledAmount()
-		
+		}
+		if(playersWithChips.length > 1){
+			this.changeTurn()}
+		else{console.log("we have a winner!", playersWithChips[0])
+			return  
 		//if only one player has chips, they are the winner
 	
 
 	}
 
-}
+} }
 
 game.createPlayers("player1")
 game.createPlayers("player2")
