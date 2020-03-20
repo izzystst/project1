@@ -37,14 +37,16 @@ const game = {
 	createPlayers:function(name){
 		let player = new Player(name)
 		this.playersArr.push(player)
-		const ul = document.querySelector('#player-list')
+		const ol = document.querySelector('#player-list')
 		const li = document.createElement('li')
 		for(let i = 0; i< this.playersArr.length; i++){
 			let playerLi = this.playersArr[i].name
-			
 			li.innerText = playerLi
-			ul.appendChild(li)
+			ol.appendChild(li)
 		}
+		
+
+		
 		
 	},
 	
@@ -167,6 +169,8 @@ const game = {
 
 const addPlayerForm = document.querySelector('#addPlayer')
 const formInput = document.querySelector('#playerName')
+const start = document.querySelector('#start-game')
+start.style.visibility="hidden"
 
 addPlayerForm.addEventListener('submit',(event)=>{
 	addPlayerForm.querySelector("#playerName")
@@ -175,7 +179,10 @@ addPlayerForm.addEventListener('submit',(event)=>{
 	console.log("submitted")
 	game.createPlayers(formInput.value)
 	formInput.value = ""
+	if(game.playersArr.length >= 3){
+		start.style.visibility="visible"
 
+	}
 })
 
 // console.log(player1.chips)
