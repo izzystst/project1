@@ -58,6 +58,7 @@ const game = {
 	},
 	
 	placeChips:function(){
+
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
 			playerDiv.setAttribute('class', `player-${[i]}`)
@@ -111,6 +112,8 @@ const game = {
 	},
 
 	movingPieces:function(move){
+	currentPlayer = document.querySelector(`.player-${[this.turn]}`)
+	toTheLeft = document.querySelector(`.player-${[this.turn + 1]}`)
 		if(move === 'C'){
 			game.center += 1
 			this.playersArr[this.turn].chips -= 1
@@ -120,16 +123,18 @@ const game = {
 		else if(move === 'L'){
 			if(this.turn == this.playersArr.length - 1){
 				this.playersArr[0].chips += 1
+				document.querySelector(".player-0").append(currentPlayer.lastChild)
 				//this is if it is the last item in the array, it will add a chip to the first item in the array
 			}else{
 				this.playersArr[this.turn + 1].chips += 1
-				//move left
+				toTheLeft.append(currentPlayer.lastChild)
 			}
 			this.playersArr[this.turn].chips -= 1
 		}
 		else if(move === 'R'){
 			if(this.turn === 0){
 				this.playersArr[this.playersArr.length - 1].chips += 1
+				document.querySelector(`.player-${this.playersArr.length -1}`)
 				//if it is the first item in the array, it will 'move' a chip to the last item in the array
 			}
 			else{
@@ -143,9 +148,15 @@ const game = {
 
 	},
 moveMent:function(){
-	currentPlayer = document.querySelector(`.player-${[this.turn]}`)
-	console.log(currentPlayer)
-
+	let playerDiv = document.querySelector(".player")
+	for (let i = 0; i < this.playersArr.length; i++){
+		for(let j = 0; j < this.playersArr[i].chips; j++){
+				const chipImg = document.createElement('img')
+				chipImg.setAttribute('id', 'chip-image')
+				chipImg.setAttribute("src", 'css/chip.png')
+				playerDiv.appendChild(chipImg)
+			}
+	}
 	},
 	changeTurn:function(){
 		if(this.turn < this.playersArr.length - 1){
@@ -155,7 +166,7 @@ moveMent:function(){
 		}
 		console.log("turn was changed to", this.turn)
 		// this.rolledAmount()
-		this.rolledAmount()
+		this.placeChips()
 	},
 
 	checkChips:function(){
