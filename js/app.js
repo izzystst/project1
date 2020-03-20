@@ -52,12 +52,17 @@ const game = {
 		center.setAttribute('id', 'center-chips')
 		center.innerText = `${this.center}`
 		centerDiv.appendChild(center)
-
+		//sho
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
 			playerDiv.setAttribute('class', 'player')
-			playerDiv.innerText = `${this.playersArr[i].name}, ${this.playersArr[i].chips}`
+			playerDiv.innerText = `${this.playersArr[i].name}`
 			container.appendChild(playerDiv)
+			for(let i = 0; i < 3; i++){
+				const chipImg = document.createElement('img')
+				chipImg.setAttribute("src", 'css/chip.png')
+				playerDiv.appendChild(chipImg)
+			}
 		}
 	},
 	
@@ -128,7 +133,6 @@ const game = {
 			//move right
 		}
 		
-
 
 
 	},
