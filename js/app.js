@@ -39,28 +39,23 @@ const game = {
 		this.playersArr.push(player)
 		const ol = document.querySelector('#player-list')
 		const li = document.createElement('li')
-		for(let i = 0; i< this.playersArr.length; i++){
+		for(let i = 0; i < this.playersArr.length; i++){
 			let playerLi = this.playersArr[i].name
 			li.innerText = playerLi
 			ol.appendChild(li)
 		}
-		
-
-		
-		
+	},
+	startGame:function(){
+		for(let i = 0; i < this.playersArr.length; i++){
+			const playerDiv = document.createElement("div")
+			playerDiv.setAttribute('class', 'player')
+			playerDiv.innerText = "this is here"
+			document.querySelector("#container").appendChild(playerDiv)
+		}
 	},
 	
 
 
-	rollDice: function(player){
-		let roll = Math.ceil(Math.random()*5)
-		console.log(this.diceSides[roll])
-		//this.playersArr[i].changeTurn()
-		// return roll
-		
-		this.movingPieces(this.diceSides[roll])
-
-	},
 
 	rolledAmount:function(index){
 	// console.log(this.chips)
@@ -86,6 +81,17 @@ const game = {
 		this.checkChips()
 		// this.changeTurn()x
 	},
+
+	rollDice: function(player){
+		let roll = Math.ceil(Math.random()*5)
+		console.log(this.diceSides[roll])
+		//this.playersArr[i].changeTurn()
+		// return roll
+		
+		this.movingPieces(this.diceSides[roll])
+
+	},
+
 	movingPieces:function(move){
 		if(move === 'C'){
 			game.center += 1
@@ -187,10 +193,10 @@ addPlayerForm.addEventListener('submit',(event)=>{
 const startScreen = document.querySelector("#start")
 start.addEventListener("click", (event)=>{
 	console.log(event)
-	game.rolledAmount()
+	game.startGame()
 	startScreen.style.visibility="hidden"
 	start.style.visibility="hidden"
-
+	
 
 })
 
