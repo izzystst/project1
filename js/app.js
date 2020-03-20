@@ -184,6 +184,10 @@ addPlayerForm.addEventListener('submit',(event)=>{
 
 	}
 })
+start.addEventListener("click", (event)=>{
+	console.log(event)
+	game.rolledAmount()
+})
 
 // console.log(player1.chips)
 // console.log(game.center)
