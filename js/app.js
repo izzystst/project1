@@ -37,16 +37,17 @@ const game = {
 	createPlayers:function(name){
 		let player = new Player(name)
 		this.playersArr.push(player)
+		const ul = document.querySelector('#player-list')
+		const li = document.createElement('li')
+		for(let i = 0; i< this.playersArr.length; i++){
+			let playerLi = this.playersArr[i].name
+			
+			li.innerText = playerLi
+			ul.appendChild(li)
+		}
 		
 	},
-	// startGame:function(){
-	// 	for(let i = 0; i < this.playersArr.length; i++){
-	// 		this.playersArr[i].changeTurn()
-	// 		while(this.playersArr[i].currentTurn = true){
-	// 			this.rolledAmount(i)
-	// 		}
-	// 	}
-	// },
+	
 
 
 	rollDice: function(player){
@@ -174,10 +175,8 @@ addPlayerForm.addEventListener('submit',(event)=>{
 	console.log("submitted")
 	game.createPlayers(formInput.value)
 	formInput.value = ""
-	
+
 })
 
-game.createPlayers("player1")
-game.createPlayers("player2")
-game.createPlayers("player3")// console.log(player1.chips)
+// console.log(player1.chips)
 // console.log(game.center)
