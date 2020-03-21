@@ -53,28 +53,61 @@ const game = {
 		center.innerText = `${this.center}`
 		centerDiv.appendChild(center)
 		//sho
-		this.placeChips()
+		this.rolledAmount()
 		
 	},
 	
 	placeChips:function(){
+// // }
+
+		let holder = document.createElement('div')
+		holder.setAttribute("id", "holder")
+		container.appendChild(holder)
 
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
 			playerDiv.setAttribute('class', `player-${[i]}`)
 			playerDiv.innerText = `${this.playersArr[i].name}`
-			container.appendChild(playerDiv)
-
+			holder.appendChild(playerDiv)
 			for(let j = 0; j < this.playersArr[i].chips; j++){
 				const chipImg = document.createElement('img')
 				chipImg.setAttribute('id', 'chip-image')
 				chipImg.setAttribute("src", 'css/chip.png')
 				playerDiv.appendChild(chipImg)
 			}
-		}
-		this.rolledAmount()
-	},
+// 		const centerDiv = document.querySelector("#center-chips")
+// 		for(let i = 0; i < this.center; i++){
+// 			const chipImg = document.createElement('img')
+// 			chipImg.setAttribute('id', 'chip-image')
+// 			chipImg.setAttribute("src", 'css/chip.png')
+// 			centerDiv.appendChild(chipImg )
+// 		}
 
+// 		}
+// 		this.rolledAmount()
+		}
+	},
+	getRidOf:function(){
+
+
+
+		let holderDel = document.querySelector("#holder")
+		for(let i = 0; i < this.playersArr.length; i++){
+			for(let j = 0; j < this.playersArr[i]; j++){
+			document.querySelector("#holder").remove()	
+		}
+
+	// // }
+	// // 	let centerDiv = document.querySelector("#center-chips")
+	// // 	// centerDiv.remove()
+	// // 	while (centerDiv.firstChild) {
+ // //    		centerDiv.firstChild.remove();
+		
+
+	// 	this.placeChips()
+	// }
+		}
+	},
 
 	rolledAmount:function(index){
 	// console.log(this.chips)
@@ -123,18 +156,16 @@ const game = {
 		else if(move === 'L'){
 			if(this.turn == this.playersArr.length - 1){
 				this.playersArr[0].chips += 1
-				document.querySelector(".player-0").append(currentPlayer.lastChild)
 				//this is if it is the last item in the array, it will add a chip to the first item in the array
 			}else{
 				this.playersArr[this.turn + 1].chips += 1
-				toTheLeft.append(currentPlayer.lastChild)
 			}
 			this.playersArr[this.turn].chips -= 1
 		}
 		else if(move === 'R'){
 			if(this.turn === 0){
 				this.playersArr[this.playersArr.length - 1].chips += 1
-				document.querySelector(`.player-${this.playersArr.length -1}`)
+				// document.querySelector(`.player-${this.playersArr.length -1}`)
 				//if it is the first item in the array, it will 'move' a chip to the last item in the array
 			}
 			else{
@@ -147,17 +178,17 @@ const game = {
 		
 
 	},
-moveMent:function(){
-	let playerDiv = document.querySelector(".player")
-	for (let i = 0; i < this.playersArr.length; i++){
-		for(let j = 0; j < this.playersArr[i].chips; j++){
-				const chipImg = document.createElement('img')
-				chipImg.setAttribute('id', 'chip-image')
-				chipImg.setAttribute("src", 'css/chip.png')
-				playerDiv.appendChild(chipImg)
-			}
-	}
-	},
+// moveMent:function(){
+// 	let playerDiv = document.querySelector(".player")
+// 	for (let i = 0; i < this.playersArr.length; i++){
+// 		for(let j = 0; j < this.playersArr[i].chips; j++){
+// 				const chipImg = document.createElement('img')
+// 				chipImg.setAttribute('id', 'chip-image')
+// 				chipImg.setAttribute("src", 'css/chip.png')
+// 				playerDiv.appendChild(chipImg)
+// 			}
+// 	}
+// 	},
 	changeTurn:function(){
 		if(this.turn < this.playersArr.length - 1){
 			this.turn += 1
@@ -165,8 +196,12 @@ moveMent:function(){
 			this.turn = 0
 		}
 		console.log("turn was changed to", this.turn)
-		// this.rolledAmount()
+		document.querySelector("#holder").remove()
+		document.querySelector("#center-chips").innerText = ``
+
 		this.placeChips()
+		// this.rolledAmount()
+		// this.delete()
 	},
 
 	checkChips:function(){
@@ -225,6 +260,7 @@ addPlayerForm.querySelector("#playerName")
 const startScreen = document.querySelector("#start")
 start.addEventListener("click", (event)=>{
 	console.log(event)
+	game.placeChips()
 	game.startGame()
 	startScreen.style.visibility="hidden"
 	start.style.visibility="hidden"
