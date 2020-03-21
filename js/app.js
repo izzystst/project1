@@ -215,6 +215,7 @@ const game = {
 		if(playersWithChips.length > 1){
 			this.changeTurn()}
 		else{console.log("we have a winner!", playersWithChips[0])
+
 			return  
 	}
 	
@@ -264,6 +265,7 @@ start.addEventListener("click", (event)=>{
 	// game.startGame()
 	startScreen.style.visibility="hidden"
 	start.style.visibility="hidden"
+	diceClick.style.visibility="visible"
 	
 
 })
