@@ -46,7 +46,7 @@ const game = {
 		}
 	},
 	startGame:function(){
-		const container = document.querySelector("#container")
+		const container = document.querySelector("#gamecontainer")
 		const centerDiv = document.querySelector("#center")
 		const center = document.createElement('div')
 		center.setAttribute('id', 'center-chips')
@@ -59,7 +59,7 @@ const game = {
 	
 	placeChips:function(){
 // // }
-
+		const container = document.querySelector("#gamecontainer")
 		let holder = document.createElement('div')
 		holder.setAttribute("id", "holder")
 		container.appendChild(holder)
