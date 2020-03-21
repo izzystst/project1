@@ -261,11 +261,15 @@ const startScreen = document.querySelector("#start")
 start.addEventListener("click", (event)=>{
 	console.log(event)
 	game.placeChips()
-	game.startGame()
+	// game.startGame()
 	startScreen.style.visibility="hidden"
 	start.style.visibility="hidden"
 	
 
+})
+let diceClick = document.querySelector("#diceClick")
+diceClick.addEventListener('click', (event)=>{
+	game.startGame()
 })
 
 // console.log(player1.chips)
