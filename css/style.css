@@ -31,3 +31,18 @@ img#diceClick {
 	margin: auto;
 	visibility: hidden;
 }
+#stats{
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	visibility: hidden;
+
+}
+#gameOver {
+	visibility: hidden;
+	width: 90%;
+	height: 90%;
+	margin: auto;
+	background-color: black
+	padding: 100px;
+}

@@ -87,6 +87,7 @@ const game = {
 			const chipImg = document.createElement('img')
 			chipImg.setAttribute('id', 'chip-image')
 			chipImg.setAttribute("src", 'css/chip.png')
+			centerChips.innerText="Center:"
 			centerChips.appendChild(chipImg )
 // 		}
 
@@ -190,6 +191,11 @@ const game = {
 			this.placeChips()
 		}
 		else{console.log("we have a winner!", playersWithChips[0])
+			let diceClick = document.querySelector("#diceClick")
+
+			let over = document.querySelector('#gameOver')
+			over.style.visibility="visible"
+			diceClick.style.visibility="hidden"
 			return
 		}
 
@@ -216,6 +222,7 @@ addPlayerForm.querySelector("#playerName")
 	}
 })
 const startScreen = document.querySelector("#start")
+let stat = document.querySelector("#stats")
 start.addEventListener("click", (event)=>{
 	console.log(event)
 	game.placeChips()
@@ -223,6 +230,7 @@ start.addEventListener("click", (event)=>{
 	startScreen.style.visibility="hidden"
 	start.style.visibility="hidden"
 	diceClick.style.visibility="visible"
+	stat.style.visibility="visible"
 	
 
 })
