@@ -50,7 +50,7 @@ const game = {
 		const centerDiv = document.querySelector("#center")
 		const center = document.createElement('div')
 		center.setAttribute('id', 'center-chips')
-		center.innerText = `${this.center}`
+		// center.innerText = `${this.center}`
 		centerDiv.appendChild(center)
 		//sho
 		this.rolledAmount()
@@ -127,10 +127,11 @@ const game = {
 		}else if(this.playersArr[this.turn].chips === 1){
 			for(let i = 0; i < 1; i++){
 				this.rollDice()
-				
 			}
+		}else if(this.playersArr[this.turn].chips === 0){
+			this.changeTurn()
 		}
-		this.checkChips()
+		this.changeTurn()
 		// this.changeTurn()x
 	},
 
@@ -173,22 +174,9 @@ const game = {
 			}
 			this.playersArr[this.turn].chips -= 1
 
-			//move right
 		}
-		
-
 	},
-// moveMent:function(){
-// 	let playerDiv = document.querySelector(".player")
-// 	for (let i = 0; i < this.playersArr.length; i++){
-// 		for(let j = 0; j < this.playersArr[i].chips; j++){
-// 				const chipImg = document.createElement('img')
-// 				chipImg.setAttribute('id', 'chip-image')
-// 				chipImg.setAttribute("src", 'css/chip.png')
-// 				playerDiv.appendChild(chipImg)
-// 			}
-// 	}
-// 	},
+		
 	changeTurn:function(){
 		if(this.turn < this.playersArr.length - 1){
 			this.turn += 1
@@ -196,12 +184,11 @@ const game = {
 			this.turn = 0
 		}
 		console.log("turn was changed to", this.turn)
+		console.log(this.playersArr)
 		document.querySelector("#holder").remove()
-		document.querySelector("#center-chips").innerText = ``
+		document.querySelector("#center-chips").innerText=`${this.center}`
 
-		this.placeChips()
-		// this.rolledAmount()
-		// this.delete()
+		this.checkChips()
 	},
 
 	checkChips:function(){
@@ -213,31 +200,14 @@ const game = {
 			}
 		}
 		if(playersWithChips.length > 1){
-			this.changeTurn()}
+			this.placeChips()
+		}
 		else{console.log("we have a winner!", playersWithChips[0])
+			return
+		}
 
-			return  
-	}
-	
-				
+	},
 
-			
-		
-		
-	
-
-},
-// moveChips:function(){
-// 	const playerDiv = document.querySelector(".player")
-// 		const chipImg = document.querySelector('#chip-image')
-// 		for(let i = 0; i < this.playersArr.length; i++){
-
-// 			for(let j = 0; j < this.playersArr[i].chips; j++){
-// 				chipImg.setAttribute("src", '')
-// 				// playerDiv.appendChild(chipImg)
-// 			}
-// 		}
-// 	this.changeTurn()
  }
 
 
