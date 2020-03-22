@@ -82,14 +82,15 @@ const game = {
 		// center.innerText = `${this.center}`
 		centerDiv.appendChild(center)
 
-		const centerChips = document.querySelector("#center-chips")		
+		const centerChips = document.querySelector("#center-chips")	
+		if(this.center >= 1){	
 		for(let i = 0; i < this.center; i++){
 			const chipImg = document.createElement('img')
 			chipImg.setAttribute('id', 'chip-image')
 			chipImg.setAttribute("src", 'css/chip.png')
-			centerChips.innerText="Center:"
+			chipImg.innerText="Center:"
 			centerChips.appendChild(chipImg )
-// 		}
+		}
 
 // 		}
 // 		this.rolledAmount()
