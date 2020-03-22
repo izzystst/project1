@@ -63,12 +63,16 @@ const game = {
 		let holder = document.createElement('div')
 		holder.setAttribute("id", "holder")
 		container.appendChild(holder)
+		const stats = document.querySelector('#stats')
+		stats.innerHTML=`${this.playersArr[this.turn].name} click the dice to roll.`
+		
 
 		for(let i = 0; i < this.playersArr.length; i++){
 			const playerDiv = document.createElement("div")
-			playerDiv.setAttribute('class', `player-${[i]}`)
-			playerDiv.innerText = `${this.playersArr[i].name}`
+			playerDiv.setAttribute('class', `player ${[i]}`)
+			playerDiv.innerHTML = `<p>${this.playersArr[i].name}</p>`
 			holder.appendChild(playerDiv)
+
 			for(let j = 0; j < this.playersArr[i].chips; j++){
 				const chipImg = document.createElement('img')
 				chipImg.setAttribute('id', 'chip-image')
@@ -79,16 +83,16 @@ const game = {
 		const centerDiv = document.querySelector("#center")
 		const center = document.createElement('div')
 		center.setAttribute('id', 'center-chips')
-		// center.innerText = `${this.center}`
+		// center.innerHTML = `<h1>Center</h1>`
 		centerDiv.appendChild(center)
 
-		const centerChips = document.querySelector("#center-chips")	
 		if(this.center >= 1){	
 		for(let i = 0; i < this.center; i++){
+		const centerChips = document.querySelector("#center-chips")	
 			const chipImg = document.createElement('img')
 			chipImg.setAttribute('id', 'chip-image')
 			chipImg.setAttribute("src", 'css/chip.png')
-			chipImg.innerText="Center:"
+			chipImg.innerHTML="Center:"
 			centerChips.appendChild(chipImg )
 		}
 
@@ -135,8 +139,7 @@ const game = {
 	},
 
 	movingPieces:function(move){
-	currentPlayer = document.querySelector(`.player-${[this.turn]}`)
-	toTheLeft = document.querySelector(`.player-${[this.turn + 1]}`)
+
 		if(move === 'C'){
 			game.center += 1
 			this.playersArr[this.turn].chips -= 1
@@ -193,10 +196,14 @@ const game = {
 		}
 		else{console.log("we have a winner!", playersWithChips[0])
 			let diceClick = document.querySelector("#diceClick")
+			const stats = document.querySelector('#stats')
 
 			let over = document.querySelector('#gameOver')
 			over.style.visibility="visible"
+			over.innerHTML=`${playersWithChips[0].name} is the winner!!`
 			diceClick.style.visibility="hidden"
+			stats.style.visibility="hidden"
+
 			return
 		}
 
