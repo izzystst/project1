@@ -74,40 +74,27 @@ const game = {
 				chipImg.setAttribute('id', 'chip-image')
 				chipImg.setAttribute("src", 'css/chip.png')
 				playerDiv.appendChild(chipImg)
-			}
-// 		const centerDiv = document.querySelector("#center-chips")
-// 		for(let i = 0; i < this.center; i++){
-// 			const chipImg = document.createElement('img')
-// 			chipImg.setAttribute('id', 'chip-image')
-// 			chipImg.setAttribute("src", 'css/chip.png')
-// 			centerDiv.appendChild(chipImg )
+			}}
+		
+		const centerDiv = document.querySelector("#center")
+		const center = document.createElement('div')
+		center.setAttribute('id', 'center-chips')
+		// center.innerText = `${this.center}`
+		centerDiv.appendChild(center)
+
+		const centerChips = document.querySelector("#center-chips")		
+		for(let i = 0; i < this.center; i++){
+			const chipImg = document.createElement('img')
+			chipImg.setAttribute('id', 'chip-image')
+			chipImg.setAttribute("src", 'css/chip.png')
+			centerChips.appendChild(chipImg )
 // 		}
 
 // 		}
 // 		this.rolledAmount()
 		}
 	},
-	getRidOf:function(){
-
-
-
-		let holderDel = document.querySelector("#holder")
-		for(let i = 0; i < this.playersArr.length; i++){
-			for(let j = 0; j < this.playersArr[i]; j++){
-			document.querySelector("#holder").remove()	
-		}
-
-	// // }
-	// // 	let centerDiv = document.querySelector("#center-chips")
-	// // 	// centerDiv.remove()
-	// // 	while (centerDiv.firstChild) {
- // //    		centerDiv.firstChild.remove();
-		
-
-	// 	this.placeChips()
-	// }
-		}
-	},
+	
 
 	rolledAmount:function(index){
 	// console.log(this.chips)
@@ -186,7 +173,7 @@ const game = {
 		console.log("turn was changed to", this.turn)
 		console.log(this.playersArr)
 		document.querySelector("#holder").remove()
-		document.querySelector("#center-chips").innerText=`${this.center}`
+		document.querySelector("#center-chips").remove()
 
 		this.checkChips()
 	},
