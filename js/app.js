@@ -92,7 +92,6 @@ const game = {
 			const chipImg = document.createElement('img')
 			chipImg.setAttribute('id', 'chip-image')
 			chipImg.setAttribute("src", 'css/chip.png')
-			chipImg.innerHTML="Center:"
 			centerChips.appendChild(chipImg )
 		}
 
@@ -135,6 +134,11 @@ const game = {
 		// return roll
 		
 		this.movingPieces(this.diceSides[roll])
+		document.querySelector("#dice")
+		let rolls = document.createElement("div")
+		rolls.setAttribute("id", "rolled")
+		// rolls.innerHTML=`${this.playersArr[this.turn]} rolled {this.diceSides[roll]}`
+		document.querySelector("#dice").appendChild(rolls)
 
 	},
 
@@ -179,6 +183,7 @@ const game = {
 		console.log(this.playersArr)
 		document.querySelector("#holder").remove()
 		document.querySelector("#center-chips").remove()
+		document.querySelector("#rolled").remove()
 
 		this.checkChips()
 	},
@@ -244,7 +249,7 @@ start.addEventListener("click", (event)=>{
 })
 let diceClick = document.querySelector("#diceClick")
 diceClick.addEventListener('click', (event)=>{
-	game.startGame()
+	game.rolledAmount()
 })
 
 // console.log(player1.chips)

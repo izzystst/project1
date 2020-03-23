@@ -1,6 +1,6 @@
 #gamecontainer {
-	width: 90%;
-	height: 90%;
+	/*width: 90%;
+	height: 90%;*/
 	margin: auto;
 	background-color: lavender;
 	padding: 100px;
@@ -8,15 +8,15 @@
 	/*display: inline-flex;*/
 }
 #form{
-	width: 50%;
-	height: 50%;
+	/*width: 50%;
+	height: 50%;*/
 	margin:auto;
 	display: inline-block;
 	background-color: blue;
 }
 #start {
-		width: 50%;
-	height: 50%;
+	width: 85%;
+	height: 85%;
 	margin:auto;
 	padding: 0px;
 
@@ -24,10 +24,13 @@
 #roll {
 	margin: auto;
 }
+#rolled {
+	margin: auto;
+}
 #center {
 	width: 50%;
 	height: 50%;
-	margin:auto;
+	margin: auto;
 	padding: 0px;
 	display: grid;
  	grid-auto-columns: auto;
@@ -35,10 +38,18 @@
  	grid-gap: 1rem;
 
 }
+#center-chips{
+	margin: inherit;
+}
+#addPlayer {
+	margin: auto;
+}
 #player {
 	display: flex;
 	flex-direction: column;
 	align-content: stretch;
+	margin: auto;
+    text-align: center;
 }
 #dice {
 	display: grid;
@@ -78,7 +89,7 @@ img#diceClick {
  
 	grid-gap: 1rem;
 	margin: auto;
-
+	text-align: center;
  
 }
 }
