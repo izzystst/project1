@@ -44,7 +44,7 @@ Player 3 rolls (2 chips): C, R
 Player two is the winner!!!!
 
 WireFrames-
-![start](https://imgur.com/a/zCJAt2g)
+![start](<blockquote class="imgur-embed-pub" lang="en" data-id="a/zCJAt2g"><a href="//imgur.com/a/zCJAt2g"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>)
 ![start of rounds](https://imgur.com/a/jmZAwmt)
 ![example of midgame](https://imgur.com/a/ptuV4B5)
 ![end of game](https://imgur.com/a/eItfeui)
