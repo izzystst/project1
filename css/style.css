@@ -5,6 +5,8 @@
 	background-color: lavender;
 	padding: 100px;
 	border: 5px solid red;
+	visibility: visible;
+	align-items: center;
 	/*display: inline-flex;*/
 }
 #form{
@@ -72,12 +74,12 @@ img#diceClick {
 
 }
 #gameOver {
-	visibility: hidden;
-	width: 90%;
-	height: 90%;
 	margin: auto;
-	background-color: black
+	background-color: blue;
 	padding: 100px;
+	border: 5px solid red;
+	visibility: hidden;
+	align-items: center;
 }
 
 #holder {
