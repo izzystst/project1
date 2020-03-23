@@ -44,6 +44,7 @@ const game = {
 			li.innerText = playerLi
 			ol.appendChild(li)
 		}
+
 	},
 	startGame:function(){
 		const container = document.querySelector("#gamecontainer")
@@ -52,19 +53,25 @@ const game = {
 		center.setAttribute('id', 'center-chips')
 		// center.innerText = `${this.center}`
 		centerDiv.appendChild(center)
-		//sho
-		// document.querySelector("#dice")
-		// let rolls = document.createElement("div")
-		// rolls.setAttribute("id", "rolled")
-		// document.querySelector("#dice").appendChild(rolls)
-
+		document.querySelector("#dice")
+		// let rollsC = document.createElement("div")
+		// rollsC.setAttribute("id", "rolledC")
+		// document.querySelector("#dice").appendChild(rollsC)
+		// 								document.querySelector("#dice")
+		// let rollsL = document.createElement("div")
+		// rollsL.setAttribute("id", "rolledL")
+		// document.querySelector("#dice").appendChild(rollsL)
+		// 								document.querySelector("#dice")
+		// let rollsR = document.createElement("div")
+		// rollsR.setAttribute("id", "rolledR")
+		// document.querySelector("#dice").appendChild(rollsR)
 
 		this.rolledAmount()
 		
 	},
 	
 	placeChips:function(){
-// // }
+
 		const container = document.querySelector("#gamecontainer")
 		let holder = document.createElement('div')
 		holder.setAttribute("id", "holder")
@@ -84,7 +91,8 @@ const game = {
 				chipImg.setAttribute('id', 'chip-image')
 				chipImg.setAttribute("src", 'css/chip.png')
 				playerDiv.appendChild(chipImg)
-			}}
+			}
+		}
 		
 
 		if(this.center >= 1){	
@@ -94,6 +102,8 @@ const game = {
 		// center.innerHTML = `<h1>Center</h1>`
 		centerDiv.appendChild(center)
 		for(let i = 0; i < this.center; i++){
+		document.querySelector("#center").style.visibility="visible"
+
 		const centerChips = document.querySelector("#center-chips")	
 			const chipImg = document.createElement('img')
 			chipImg.setAttribute('id', 'chip-image')
@@ -101,9 +111,6 @@ const game = {
 			centerChips.appendChild(chipImg )
 		}
 
-
-// 		}
-// 		this.rolledAmount()
 		}
 	},
 	
@@ -128,7 +135,6 @@ const game = {
 				this.rollDice()
 			}
 		}
-		
 		this.changeTurn()
 		// this.changeTurn()x
 	},
@@ -136,14 +142,32 @@ const game = {
 	rollDice: function(player){
 		let roll = Math.ceil(Math.random()*5)
 		console.log(this.diceSides[roll])
+		// document.querySelector("#dice")
+		// let rolls = document.createElement("div")
+		// rolls.setAttribute("id", "rolled")
+		// document.querySelector("#dice").appendChild(rolls)
+		// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[roll]}`
+		// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[roll]}`
+		// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[roll]}`
+
+		let rollsC = document.createElement("div")
+		rollsC.setAttribute("id", "rolledC")
+		document.querySelector("#dice").appendChild(rollsC)
+										document.querySelector("#dice")
+		let rollsL = document.createElement("div")
+		rollsL.setAttribute("id", "rolledL")
+		document.querySelector("#dice").appendChild(rollsL)
+										document.querySelector("#dice")
+		let rollsR = document.createElement("div")
+		rollsR.setAttribute("id", "rolledR")
+		document.querySelector("#dice").appendChild(rollsR)
+		
+
+
 
 		//this.playersArr[i].changeTurn()
 		// return roll
-		document.querySelector("#dice")
-		let rolls = document.createElement("div")
-		rolls.setAttribute("id", "rolled")
-		document.querySelector("#dice").appendChild(rolls)
-		document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[roll]}`
+		// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[roll]}`
 		
 		this.movingPieces(this.diceSides[roll])
 
@@ -159,22 +183,41 @@ const game = {
 	},
 
 	movingPieces:function(move){
-	document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[move]}`
+							
+
+
+	// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${this.diceSides[move]}`
+		
+
 
 		if(move === 'C'){
 			game.center += 1
 			this.playersArr[this.turn].chips -= 1
+			let rollsC = document.createElement("div")
+			rollsC.setAttribute("id", "rolledC")
+			document.querySelector("#dice").appendChild(rollsC)
+			document.querySelector("#rolledC").innerHTML=`${this.playersArr[this.turn].name} rolled C`
+
 
 			//move a piece to the center
 		}
 		else if(move === 'L'){
 			if(this.turn == this.playersArr.length - 1){
 				this.playersArr[0].chips += 1
+
 				//this is if it is the last item in the array, it will add a chip to the first item in the array
 			}else{
 				this.playersArr[this.turn + 1].chips += 1
 			}
 			this.playersArr[this.turn].chips -= 1
+			let rollsL = document.createElement("div")
+			rollsL.setAttribute("id", "rolledL")
+			document.querySelector("#dice").appendChild(rollsL)
+			document.querySelector("#rolledL").innerHTML=`${this.playersArr[this.turn].name} rolled L`
+
+
+			// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${move}`
+
 		}
 		else if(move === 'R'){
 			if(this.turn === 0){
@@ -186,6 +229,16 @@ const game = {
 				this.playersArr[this.turn - 1].chips += 1
 			}
 			this.playersArr[this.turn].chips -= 1
+			let rollsR = document.createElement("div")
+			rollsR.setAttribute("id", "rolledR")
+			document.querySelector("#dice").appendChild(rollsR)
+			document.querySelector("#rolledR").innerHTML=`${this.playersArr[this.turn].name} rolled R`
+
+		
+		
+
+			// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${move}`
+
 
 		}		
 		// document.querySelector("#rolled").innerHTML=`${this.playersArr[this.turn].name} rolled ${move}`
@@ -203,6 +256,9 @@ const game = {
 		document.querySelector("#holder").remove()
 		document.querySelector("#center-chips").remove()
 		// document.querySelector("#rolled").remove()
+		
+		// document.querySelector("#rolledL").innerHTML=""
+		// document.querySelector("#rolledR").innerHTML=""
 
 		this.checkChips()
 	},
@@ -226,9 +282,12 @@ const game = {
 			document.querySelector("#gamecontainer").style.visibility="hidden"
 
 			document.querySelector("#gameOver").style.visibility="visible"
-			// over.innerHTML=`${playersWithChips[0].name} is the winner!!`
+			document.querySelector("#reset").style.visibility="visible"
+			document.querySelector("#gameOver").innerHTML=`${playersWithChips[0].name} is the winner!!`
+			document.querySelector("#dice").remove()
 			diceClick.style.visibility="hidden"
 			stats.style.visibility="hidden"
+			document.querySelector("#center").innerHTML="Game over!"
 
 			return
 		}
@@ -265,7 +324,7 @@ start.addEventListener("click", (event)=>{
 	start.remove()
 	diceClick.style.visibility="visible"
 	stat.style.visibility="visible"
-	
+	document.querySelector(".title").style.visibility="hidden"
 
 })
 let diceClick = document.querySelector("#diceClick")

@@ -7,6 +7,8 @@
 	border: 5px solid red;
 	visibility: visible;
 	align-items: center;
+	text-align: center;
+	border-radius: 40px;
 	/*display: inline-flex;*/
 }
 #form{
@@ -33,7 +35,9 @@
 	width: 50%;
 	height: 50%;
 	margin: auto;
-	padding: 0px;
+	padding: 5px;
+	visibility: hidden;
+	font-size: 12px;
 /*	display: grid;
  	grid-auto-columns: auto;
  	grid-template-rows: repeat(3, 1fr);
@@ -54,6 +58,8 @@
     text-align: center;
 }
 #dice {
+	padding: 10px;
+	margin: auto;
 	/*display: grid;*/
  	/*grid-auto-columns: auto;
  	grid-template-rows: repeat(3, 1fr);
@@ -64,6 +70,7 @@ img#diceClick {
 	flex-direction: column;
 	margin: auto;
 	visibility: hidden;
+	padding: 50px;
 }
 #stats{
 	display: grid;
@@ -80,6 +87,11 @@ img#diceClick {
 	border: 5px solid red;
 	visibility: hidden;
 	align-items: center;
+	font-size: 40px;
+	font-weight: bolder;
+	color: white;
+	text-align: center;
+
 }
 
 #holder {
@@ -94,9 +106,15 @@ img#diceClick {
 	text-align: center;
  
 }
+ol {
+	text-align: center;
+	text-align-last: start;
+    display: inline-block;
 }
+
+
 
 /*.player {
 	display: grid;
 	grid-template-columns: 1
-*/}
+*/
