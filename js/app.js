@@ -69,7 +69,10 @@ const game = {
 		holder.setAttribute("id", "holder")
 		container.appendChild(holder)
 		const stats = document.querySelector('#stats')
-		stats.innerHTML=`${this.playersArr[this.turn].name} roll the dice.`
+		if(this.playersArr[this.turn].chips === 0){
+			stats.innerHTML=`${this.playersArr[this.turn].name} pass the dice to the next player.`
+		}else(
+		stats.innerHTML=`${this.playersArr[this.turn].name} roll the dice.`)
 		
 
 		for(let i = 0; i < this.playersArr.length; i++){
