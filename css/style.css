@@ -78,6 +78,7 @@ img#diceClick {
 	flex-direction: column;
 	margin: auto;
 	visibility: hidden;
+	font-size: 25px;
 
 }
 #gameOver {
@@ -96,11 +97,8 @@ img#diceClick {
 
 #holder {
 	display: grid;
- 
 	grid-template-columns: repeat(3, 1fr);
- 
 	grid-auto-rows: auto;
- 
 	grid-gap: 1rem;
 	margin: auto;
 	text-align: center;
@@ -111,7 +109,10 @@ ol {
 	text-align-last: start;
     display: inline-block;
 }
-
+#resetButton {
+	visibility: hidden;
+	display: inline-block;
+}
 
 
 /*.player {

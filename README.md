@@ -42,3 +42,9 @@ Stats: player 1: 0 chips, player 2: 3 chips player 3: 2 chips, center: 4 chips
 Player 2 rolls: blank, blank, blank
 Player 3 rolls (2 chips): C, R
 Player two is the winner!!!!
+
+WireFrames-
+![start](https://imgur.com/a/zCJAt2g)
+![start of rounds](https://imgur.com/a/jmZAwmt)
+![example of midgame](https://imgur.com/a/ptuV4B5)
+![end of game](https://imgur.com/a/eItfeui)
