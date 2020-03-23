@@ -80,13 +80,13 @@ const game = {
 				playerDiv.appendChild(chipImg)
 			}}
 		
+
+		if(this.center >= 1){	
 		const centerDiv = document.querySelector("#center")
 		const center = document.createElement('div')
 		center.setAttribute('id', 'center-chips')
 		// center.innerHTML = `<h1>Center</h1>`
 		centerDiv.appendChild(center)
-
-		if(this.center >= 1){	
 		for(let i = 0; i < this.center; i++){
 		const centerChips = document.querySelector("#center-chips")	
 			const chipImg = document.createElement('img')
@@ -240,8 +240,8 @@ start.addEventListener("click", (event)=>{
 	console.log(event)
 	game.placeChips()
 	// game.startGame()
-	startScreen.style.visibility="hidden"
-	start.style.visibility="hidden"
+	startScreen.remove()
+	start.remove()
 	diceClick.style.visibility="visible"
 	stat.style.visibility="visible"
 	
@@ -249,7 +249,7 @@ start.addEventListener("click", (event)=>{
 })
 let diceClick = document.querySelector("#diceClick")
 diceClick.addEventListener('click', (event)=>{
-	game.rolledAmount()
+	game.startGame()
 })
 
 // console.log(player1.chips)

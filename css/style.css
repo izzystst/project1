@@ -32,11 +32,11 @@
 	height: 50%;
 	margin: auto;
 	padding: 0px;
-	display: grid;
+/*	display: grid;
  	grid-auto-columns: auto;
  	grid-template-rows: repeat(3, 1fr);
  	grid-gap: 1rem;
-
+*/
 }
 #center-chips{
 	margin: inherit;
@@ -52,10 +52,10 @@
     text-align: center;
 }
 #dice {
-	display: grid;
- 	grid-auto-columns: auto;
+	/*display: grid;*/
+ 	/*grid-auto-columns: auto;
  	grid-template-rows: repeat(3, 1fr);
- 	grid-gap: 1rem;
+ 	grid-gap: 1rem;*/
 }
 img#diceClick {
 	display: flex;
